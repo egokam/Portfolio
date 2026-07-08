@@ -1,4 +1,4 @@
-"use client"; // مهم جداً لأننا نستخدم Framer Motion
+"use client";
 
 import Image from "next/image";
 import memojiImage from "@/assets/images/memoji-computer.png";
@@ -20,7 +20,6 @@ export const HeroSection = () => {
             }}
           ></div>
 
-          {/* حلقات المدار مع تأثير التنفس (Breathing/Pulse) */}
           <motion.div animate={{ scale: [1, 1.02, 1], opacity: [0.8, 1, 0.8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 flex items-center justify-center -z-20">
             <div className="size-[620px] hero-ring absolute"></div>
             <div className="size-[820px] hero-ring absolute"></div>
@@ -28,7 +27,6 @@ export const HeroSection = () => {
             <div className="size-[1220px] hero-ring absolute"></div>
           </motion.div>
 
-          {/* المدارات والنجوم بحركات مخصصة */}
           <HeroOrbit size={800} rotation={-72} shouldOrbit orbitDuration={48} shouldSpin spinDuration={48}>
             <motion.div animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
               <StarIcon className="size-28 text-emerald-300" />
@@ -116,14 +114,14 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
             className="flex flex-col md:flex-row justify-center items-center mt-8 gap-4"
           >
-            <button className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl hover:bg-white/5 transition-colors">
+            <a href="#projects" className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl hover:bg-white/5 transition-colors">
               <span className="font-semibold">Explore My Work</span>
               <ArrowDown className="size-4" />
-            </button>
-            <button className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl hover:bg-gray-200 transition-colors">
+            </a>
+            <a href="#contact" className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl hover:bg-gray-200 transition-colors">
               <span>📭</span>
               <span className="font-semibold">Contact Me</span>
-            </button>
+            </a>
           </motion.div>
         </div>
       </div>

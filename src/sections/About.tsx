@@ -2,7 +2,6 @@
 
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/Card";
-import StarIcon from "@/assets/icons/star.svg";
 import bookImage from "@/assets/images/book-cover.png";
 import Image from "next/image";
 import JavaScriptIcon from '@/assets/icons/square-js.svg';
@@ -11,38 +10,23 @@ import CSSIcon from '@/assets/icons/css3.svg';
 import ReactIcon from '@/assets/icons/react.svg';
 import ChromeIcon from '@/assets/icons/chrome.svg';
 import GithubIcon from '@/assets/icons/github.svg';
-import mapImage from "@/assets/images/map.png";
 import smileMemoji from "@/assets/images/memoji-smile.png";
 import { CardHeader } from "@/components/CardHeader";
 import { ToolboxItems } from "@/components/ToolboxItems";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Map, Overlay } from "pigeon-maps";
+
+const MY_LATITUDE = 30.40401;
+const MY_LONGITUDE = -9.55055;
 
 const toolboxItems = [
-  {
-    title: 'JavaScript',
-    iconType: JavaScriptIcon,
-  },
-  {
-    title: 'HTML5',
-    iconType: HTMLIcon,
-  },
-  {
-    title: 'CSS3',
-    iconType: CSSIcon,
-  },
-  {
-    title: 'React',
-    iconType: ReactIcon,
-  },
-  {
-    title: 'Github',
-    iconType: GithubIcon,
-  },
-  {
-    title: 'Chrome',
-    iconType: ChromeIcon,
-  },
+  { title: 'JavaScript', iconType: JavaScriptIcon },
+  { title: 'HTML5', iconType: HTMLIcon },
+  { title: 'CSS3', iconType: CSSIcon },
+  { title: 'React', iconType: ReactIcon },
+  { title: 'Github', iconType: GithubIcon },
+  { title: 'Chrome', iconType: ChromeIcon },
 ];
 
 const hobbies = [
@@ -55,9 +39,35 @@ const hobbies = [
   { title: 'Reading', emoji: '📖', left: '45%', top: '70%' },
 ];
 
+const mapProvider = (x: number, y: number, z: number) => {
+  return `https://tile.openstreetmap.org/${z}/${x}/${y}.png`;
+};
+
 export const AboutSection = () => {
-  // مرجع لحاوية الهوايات لضمان عدم خروجها عند السحب
   const dragConstraintRef = useRef(null);
+  
+  const [center, setCenter] = useState<[number, number]>([MY_LATITUDE, MY_LONGITUDE]);
+  const [zoom, setZoom] = useState(13);
+
+  const handleBoundsChanged = ({ center, zoom, bounds }: any) => {
+    setZoom(zoom);
+
+    const latHalfSpan = Math.abs(bounds.ne[0] - bounds.sw[0]) / 2;
+    const lngHalfSpan = Math.abs(bounds.ne[1] - bounds.sw[1]) / 2;
+
+    const maxLatDeviation = latHalfSpan * 0.35;
+    const maxLngDeviation = lngHalfSpan * 0.35;
+
+    const minLat = MY_LATITUDE - maxLatDeviation;
+    const maxLat = MY_LATITUDE + maxLatDeviation;
+    const minLng = MY_LONGITUDE - maxLngDeviation;
+    const maxLng = MY_LONGITUDE + maxLngDeviation;
+
+    const clampedLat = Math.max(minLat, Math.min(maxLat, center[0]));
+    const clampedLng = Math.max(minLng, Math.min(maxLng, center[1]));
+
+    setCenter([clampedLat, clampedLng]);
+  };
 
   return (
     <section id="about">
@@ -79,7 +89,6 @@ export const AboutSection = () => {
           <div className="mt-20 flex flex-col gap-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
 
-              {/* بطاقة الكتب */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -87,7 +96,7 @@ export const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="md:col-span-2 lg:col-span-1"
               >
-                <Card className="h-[320px] group">
+                <Card className="h-[320px]">
                   <CardHeader title="My Reads" description="Explore the books shaping my interests." />
                   <motion.div
                     whileHover={{ rotateY: 15, rotateX: 5, scale: 1.05 }}
@@ -99,7 +108,6 @@ export const AboutSection = () => {
                 </Card>
               </motion.div>
 
-              {/* بطاقة صندوق الأدوات */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -121,7 +129,6 @@ export const AboutSection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
 
-              {/* بطاقة الهوايات (تفاعلية مع السحب) */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +142,6 @@ export const AboutSection = () => {
                     {hobbies.map((hobby, index) => (
                       <motion.div
                         key={hobby.title}
-                        // تفعيل خاصية السحب
                         drag
                         dragConstraints={dragConstraintRef}
                         whileHover={{ scale: 1.1, cursor: "grab" }}
@@ -158,7 +164,6 @@ export const AboutSection = () => {
                 </Card>
               </motion.div>
 
-              {/* بطاقة الخريطة (الرادار الحي) */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -166,19 +171,37 @@ export const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="md:col-span-2 lg:col-span-2"
               >
-                <Card className="h-[320px] p-0 relative overflow-hidden group">
-                  <Image src={mapImage} alt="map" className="h-full w-full object-cover object-left-top transition-transform duration-1000 group-hover:scale-110" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+                <Card className="h-[320px] p-0 relative overflow-hidden cursor-grab active:cursor-grabbing">
+                  <style>{`
+                    .pigeon-tiles {
+                      filter: invert(100%) hue-rotate(180deg) contrast(125%) grayscale(20%);
+                      opacity: 0.8;
+                    }
+                    .pigeon-attribution {
+                      display: none !important;
+                    }
+                  `}</style>
 
-                    {/* تأثير الرادار النابض للـ SEO والمظهر الحي */}
-                    <motion.div
-                      animate={{ scale: [1, 2, 2.5], opacity: [0.8, 0.3, 0] }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
-                      className="absolute inset-0 rounded-full bg-emerald-400 -z-10"
-                    />
-
-                    <Image src={smileMemoji} alt="smiling emoji" className="size-20" />
-                  </div>
+                  <Map
+                    height={320}
+                    center={center}
+                    zoom={zoom}
+                    onBoundsChanged={handleBoundsChanged}
+                    minZoom={11}
+                    maxZoom={16}
+                    provider={mapProvider}
+                  >
+                    <Overlay anchor={[MY_LATITUDE, MY_LONGITUDE]} offset={[40, 40]}>
+                      <div className="size-20 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+                        <motion.div
+                          animate={{ scale: [1, 2, 2.5], opacity: [0.8, 0.3, 0] }}
+                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+                          className="absolute inset-0 rounded-full bg-emerald-400 -z-10"
+                        />
+                        <Image src={smileMemoji} alt="smiling emoji" className="size-20 pointer-events-none" />
+                      </div>
+                    </Overlay>
+                  </Map>
                 </Card>
               </motion.div>
 
