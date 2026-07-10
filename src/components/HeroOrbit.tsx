@@ -19,7 +19,7 @@ export const HeroOrbit = ({
 }>) => {
     return (
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-20">
-          {/* حاوية الدوران الخارجي (المدار) */}
+
           <div 
             className={twMerge(shouldOrbit && "animate-spin")}
             style={{ animationDuration: `${orbitDuration}s` }}
@@ -32,7 +32,7 @@ export const HeroOrbit = ({
                   width: `${size}px` 
               }}
             >
-              {/* حاوية الدوران الداخلي العكسي (لمنع انقلاب الأيقونة) */}
+
               <div 
                 className={twMerge(shouldSpin && "animate-spin")}
                 style={{ 

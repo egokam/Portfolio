@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import cafeqr from "@/assets/images/cafeqr.png";
 import portfolio from "@/assets/images/portfolio.png";
-import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import grainImage from "@/assets/images/grain.jpg";
@@ -70,11 +69,11 @@ export const ProjectsSection = () => {
                   backgroundImage: `url(${grainImage.src})`,
                 }}></div>
                 
-                {/* الهيكل الأصلي معزول ومحمي تماماً */}
+         
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                   <div className="lg:pb-16">
                     
-                    {/* تحريك النص التمهيدي */}
+        
                     <motion.div 
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -87,7 +86,7 @@ export const ProjectsSection = () => {
                       <span>{project.year}</span>
                     </motion.div>
 
-                    {/* تحريك العنوان الرئيسي */}
+       
                     <motion.h3 
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +97,7 @@ export const ProjectsSection = () => {
                       {project.title}
                     </motion.h3>
                     
-                    {/* حركة انسيابية للخط الفاصل */}
+
                     <motion.hr 
                       initial={{ scaleX: 0, transformOrigin: "left" }}
                       whileInView={{ scaleX: 1 }}
@@ -109,7 +108,7 @@ export const ProjectsSection = () => {
                     
                     <ul className="flex flex-col gap-4 mt-4 md:mt-5">
                       {project.results.map((result, i) => (
-                        // تحريك متسلسل للنقاط بناءً على الـ index
+
                         <motion.li 
                           key={result.title} 
                           initial={{ opacity: 0, x: -20 }}
@@ -124,7 +123,7 @@ export const ProjectsSection = () => {
                       ))}
                     </ul>
                     
-                    {/* تحريك الزر */}
+
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -140,7 +139,7 @@ export const ProjectsSection = () => {
                     </motion.div>
                   </div>
                   
-                  {/* حاوية الصورة - دخول فخم من الأسفل دون تغيير أبعاد Tailwind الأصلية */}
+
                   <motion.div 
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}

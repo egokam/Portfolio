@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 export const Header = () => {
   return (
     <motion.div 
-      // تأثير الانزلاق الأنيق من الأعلى عند تحميل الصفحة
+ 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.5 }}
-      // تم رفع z-index إلى 50 لضمان بقائه فوق كل الأقسام الأخرى
+    
       className="flex justify-center items-center fixed top-3 w-full z-50"
     >
       <nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur-md shadow-lg shadow-black/20">
         
-        {/* الروابط العادية مع تأثيرات التمرير والنقر */}
+    
         <motion.a 
           href="#home" 
           className="nav-item transition-colors hover:text-white"
@@ -42,7 +42,7 @@ export const Header = () => {
           About
         </motion.a>
         
-        {/* زر التواصل المميز */}
+
         <motion.a 
           href="#contact" 
           className="nav-item bg-white text-gray-900 hover:bg-white/70 hover:text-gray-900 transition-colors"

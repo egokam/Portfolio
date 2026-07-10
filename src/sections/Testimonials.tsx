@@ -61,7 +61,7 @@ export const TestimonialsSection = () => {
           />
         </motion.div>
 
-        {/* التعديل هنا: أضفنا py-8 -my-8 لمنع القص (Cropping) وإعطاء مساحة للتأثيرات */}
+  
         <div className="mt-16 lg:mt-24 flex overflow-x-clip [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-8 -my-8">
           
           <motion.div 

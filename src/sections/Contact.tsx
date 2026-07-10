@@ -14,7 +14,7 @@ export const ContactSection = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            // تم إضافة style لضمان الـ z-index وتفاعل الفأرة
+     
             style={{ zIndex: 1 }}
             className='bg-gradient-to-r from-emerald-300 to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left relative overflow-hidden'
           >
@@ -54,7 +54,7 @@ export const ContactSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4, type: "spring", stiffness: 200 }}
                 >
-                  {/* قمنا بإزالة الـ button واستخدمنا a tag مباشرة ليكون الكود نظيفاً وصحيحاً */}
+        
                   <a
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=egokam.business@gmail.com&su=Let's%20Work%20Together"
                     target="_blank"

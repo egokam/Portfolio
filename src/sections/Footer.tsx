@@ -3,7 +3,7 @@
 import ArrowUpRightIcon from '@/assets/icons/arrow-up-right.svg';
 import { motion } from 'framer-motion';
 
-// ضع روابط حساباتك الحقيقية هنا
+
 const footerLinks = [
   {
     title: 'Instagram',
@@ -25,10 +25,10 @@ const footerLinks = [
 
 export const Footer = () => {
   return (
-    // تم إزالة -z-10 من هنا لكي تصبح الأزرار قابلة للنقر (Clickable)
+   
     <footer className='relative overflow-x-clip z-0'>
       
-      {/* تأثير الهالة النابضة يبقى في الخلفية عبر -z-10 */}
+     
       <motion.div 
         animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -54,10 +54,10 @@ export const Footer = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 href={link.href}
                 key={link.title}
-                // إضافة خصائص الأمان والفتح في نافذة جديدة
+           
                 target="_blank"
                 rel="noopener noreferrer"
-                // تحسينات الـ Hover لتبدو كمنصة Premium
+          
                 className="inline-flex items-center gap-1.5 group transition-colors duration-300 hover:text-emerald-300 cursor-pointer"
               >
                 <span className="font-semibold relative transition-transform duration-300 group-hover:-translate-y-0.5 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-emerald-300 after:transition-all after:duration-300">
