@@ -33,7 +33,7 @@ export const ContactSection = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className='font-serif text-2xl md:text-3xl'
                 >
-                  Let's create something amazing together
+                  Let&apos;s create something amazing together
                 </motion.h2>
 
                 <motion.p
@@ -43,7 +43,7 @@ export const ContactSection = () => {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className='text-sm md:text-base mt-2'
                 >
-                  Ready to bring your visionary project to life? Let's connect to discuss how I can help you achieve your goals.
+                  Ready to bring your visionary project to life? Let&apos;s connect to discuss how I can help you achieve your goals.
                 </motion.p>
               </div>
 
