@@ -81,12 +81,11 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col items-center"
           >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div>
+            
               <Image src={memojiImage} className="size-[100px]" alt="person behind laptop" />
-            </motion.div>
+
+            </div>
 
             <div className="bg-gray-950 border border-gray-800 px-4 py-1.5 inline-flex items-center gap-4 rounded-lg mt-4">
               <motion.div
