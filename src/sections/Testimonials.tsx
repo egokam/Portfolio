@@ -13,34 +13,28 @@ import { Fragment } from "react";
 
 const testimonials = [
   {
-    name: "Alex Turner",
-    position: "Marketing Manager @ TechStartups'demo'",
-    text: "Alex was instrumental in transforming our website into a powerful marketing tool. His attention to detail and ability to understand our brand is exceptional. We're thrilled with the results!",
+    name: "Just me",
+    position: "A Full Stack dev",
+    text: "I'm the one who codes—not you, not AI. Remember that before saying or even thinking something idiotic.",
     avatar: memojiAvatar1,
   },
   {
-    name: "Olivia Green",
-    position: "Head of Design @ GreenLeaf'demo'",
-    text: "Working with Alex was a pleasure. His expertise in frontend development brought our designs to life in a way we never imagined. The website has exceeded our expectations.",
+    name: "Saul Code man",
+    position: "Lawyer",
+    text: "let me give you a piece of free legal advice from one professional to another. In the high-stakes world of full-stack development, a single bad deployment can be a felony against the user experience. So, remember the golden rule: Don't drink and code.But hey... if you did Call meee",
     avatar: memojiAvatar2,
   },
   {
-    name: "Daniel White",
-    position: "CEO @ InnovateCo'demo'",
-    text: "Alex's ability to create seamless user experiences is unmatched. Our website has seen a significant increase in conversions since launching the new design. We couldn't be happier.",
+    name: "json pinkman",
+    position: "Old Partner",
+    text: "Yeah boss! Yeah, science! I looked at this and I knew you had a plan all along. But I always wondered... are you in the code business or the money business? Or are you just gonna look at me and say 'Neither' like him? Either way, this setup is pure!",
     avatar: memojiAvatar3,
   },
   {
-    name: "Emily Carter",
-    position: "Product Manager @ GlobalTech 'demo'",
-    text: "Alex is a true frontend wizard. He took our complex product and transformed it into an intuitive and engaging user interface. We're already seeing positive feedback from our customers.",
+    name: "Gus Ping",
+    position: "Business manager",
+    text: "I investigate everyone with whom I do business. What careful man wouldn't? I don't believe fear to be an effective motivator. Never make the same mistake twice. Your product is... acceptable.",
     avatar: memojiAvatar4,
-  },
-  {
-    name: "Michael Brown",
-    position: "Director of IT @ MegaCorp 'demo'",
-    text: "Alex's work on our website has been nothing short of exceptional. He's a talented developer who is also a great communicator. We highly recommend him.",
-    avatar: memojiAvatar5,
   },
 ];
 
