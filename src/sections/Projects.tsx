@@ -26,7 +26,7 @@ const portfolioProjects = [
   {
     company: "Innovative Co",
     year: "2021",
-    title: "Light Saas Landing Page",
+    title: "Light Portfolio Page",
     results: [
       { title: "CEO boosted react portfolio" },
       { title: "high-end animations" },
